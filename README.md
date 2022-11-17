@@ -1,5 +1,5 @@
 # Veterinariaok
-191 finish, salvo algun comentario
+192 listo
 que hay aca:
 1-las const, hasta linea 10
 2-EL
