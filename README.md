@@ -1,5 +1,5 @@
 # Veterinariaok
-192 listo
+192 listo, sin ramas por ahora
 que hay aca:
 1-las const, hasta linea 10
 2-EL
