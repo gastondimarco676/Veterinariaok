@@ -9,11 +9,11 @@ const sintomasInput = document.getElementById('sintomas')
 const formulario = document.getElementById('nueva-cita')
 const contenedorCitas = document.getElementById('citas')
 
-/*class Citas {
+class Citas {
     constructor() {
         this.citas = []
     }
-
+/*
     agregarCita(cita) {
         this.citas = [...this.citas, cita]
 
@@ -21,7 +21,7 @@ const contenedorCitas = document.getElementById('citas')
     }
     eliminarCita(id){
         this.citas = this.citas.filter(cita=> cita.id != id)
-    }
+    }*/
 }
 
 class UI {
@@ -37,14 +37,14 @@ class UI {
         //mensaje de error
         divMensaje.textContent = mensaje
 
-        document.querySelector('#contenido').insertBefore(divMensaje, document.querySelector('#col-md-6 agregar-cita'))
+        document.querySelector('#contenido').insertBefore(divMensaje, document.querySelector('.agregar-cita'/*'#col-md-6 agregar-cita'*/))
 
         setTimeout(() => {
             divMensaje.remove()
         }, 4000);
     }
 
-
+/*
     imprimirCitas({ citas }) {
 
         //const {citas} = citas--otra forma de destructuring, mejor la de arriba
@@ -143,11 +143,11 @@ class UI {
         while (contenedorCitas.firstChild) {
             contenedorCitas.removeChild(contenedorCitas.firstChild)
         }
-    }
+    }*/
 
 }
 const ui = new UI()
-const administrarCitas = new Citas()*/
+const administrarCitas = new Citas()
 
 eventListeners()
 function eventListeners() {
@@ -157,7 +157,7 @@ function eventListeners() {
     fechaInput.addEventListener('change', datosCita)
     horaInput.addEventListener('change', datosCita)
     sintomasInput.addEventListener('change', datosCita)
-    //formulario.addEventListener('submit', nuevaCita)
+    formulario.addEventListener('submit', nuevaCita)
 }
 
 //OBJETO CON INFO DE LA CITA
@@ -170,14 +170,14 @@ const citaObj = {
     sintomas: '',
 
 }
-
+//agrega datos al objeto de cita
 function datosCita(e) {
     citaObj[e.target.name] = e.target.value;
 
     console.log(citaObj)
 }
 
-/*function nuevaCita(e) {
+function nuevaCita(e) {
     e.preventDefault();
     const { mascota, propietario, telefono, fecha, hora, sintomas } = citaObj;
     //validar
@@ -186,16 +186,16 @@ function datosCita(e) {
         return;
     }
     //:ui.imprimirAlerta('Cita agregada', 'success')
-    citaObj.id = Date.now()
+    /*citaObj.id = Date.now()
 
     // administrarCitas.agregarCita(citaObj)
     administrarCitas.agregarCita({ ...citaObj })
     reiniciarObjeto()
     formulario.reset()
-    ui.imprimirCitas(administrarCitas)
+    ui.imprimirCitas(administrarCitas)*/
 }
 
-function reiniciarObjeto() {
+/*function reiniciarObjeto() {
 
     const citaObj = {
         mascota: '',
