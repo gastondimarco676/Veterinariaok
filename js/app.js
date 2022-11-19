@@ -13,15 +13,15 @@ class Citas {
     constructor() {
         this.citas = []
     }
-/*
+
     agregarCita(cita) {
         this.citas = [...this.citas, cita]
 
-        //console.log(this.citas)
-    }
+        console.log(this.citas)
+/* }
     eliminarCita(id){
         this.citas = this.citas.filter(cita=> cita.id != id)
-    }*/
+    */ }
 }
 
 class UI {
@@ -174,7 +174,7 @@ const citaObj = {
 function datosCita(e) {
     citaObj[e.target.name] = e.target.value;
 
-    console.log(citaObj)
+    //console.log(citaObj)
 }
 
 function nuevaCita(e) {
@@ -186,28 +186,26 @@ function nuevaCita(e) {
         return;
     }
     //:ui.imprimirAlerta('Cita agregada', 'success')
-    /*citaObj.id = Date.now()
+   citaObj.id = Date.now()
 
-    // administrarCitas.agregarCita(citaObj)
+    //administrarCitas.agregarCita(citaObj)
     administrarCitas.agregarCita({ ...citaObj })
     reiniciarObjeto()
     formulario.reset()
-    ui.imprimirCitas(administrarCitas)*/
+    //ui.imprimirCitas(administrarCitas)
 }
 
-/*function reiniciarObjeto() {
+function reiniciarObjeto() {
 
-    const citaObj = {
-        mascota: '',
-        propietario: '',
-        telefono: '',
-        fecha: '',
-        hora: '',
-        sintomas: '',
+        citaObj.mascota= '',
+        citaObj.propietario= '',
+        citaObj.telefono= '',
+        citaObj.fecha= '',
+        citaObj.hora= '',
+        citaObj.sintomas= ''
 
-    }
 }
-
+/*
 function editarCita (cita) {
     console.log(cita)
     const { mascota, propietario, telefono, fecha, hora, sintomas } = cita;
