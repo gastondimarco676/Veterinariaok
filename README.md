@@ -1,5 +1,5 @@
 # Veterinariaok
-193 listo, lo que cambia es el app.js
+194 listo, lo que cambia es el app.js
 que hay aca:
 191
 1-las const, hasta linea 10
@@ -14,3 +14,11 @@ que hay aca:
 1) agregarCita(cita) {
         this.citas = [...this.citas, cita]
 2)formulario.reset y sobre todo, reiniciarObjeto donde correji un error
++194
+metodo ui.imprimirCitas(administrarCitas)
+-destructuring desde el parentesis
+-citas.orEach
+-divCita
+-scripting de cada parte del divCita: mascotaParrafo y demas
+-font-weight-bolder a cada span de cada item
+-limpiarHTML al comienzo, antes de imprimir todo el array citas actual
