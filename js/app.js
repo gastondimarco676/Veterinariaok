@@ -18,10 +18,10 @@ class Citas {
         this.citas = [...this.citas, cita]
 
         console.log(this.citas)
-/* }
+}
     eliminarCita(id){
-        this.citas = this.citas.filter(cita=> cita.id != id)
-    */ }
+        this.citas = this.citas.filter(cita=> cita.id !== id)
+    }
 }
 
 class UI {
@@ -86,7 +86,7 @@ class UI {
                 `<span class="font-wight-bolder">Sintromas: </span> ${sintomas}`
 
 
-            /* //ELIMICITA
+            //ELIMICITA
              const btnEliminar = document.createElement('button')
              btnEliminar.classList.add('btn', 'btn-danger', 'mr-2',)
              btnEliminar.innerHTML =
@@ -95,7 +95,7 @@ class UI {
              const eliminarCita = id => {
                  //elimina la cita
                  //contenedorCitas.removeChild(divCita)
-                 administrarCitas.eliminarCita(id)
+            administrarCitas.eliminarCita(id)
                  //mensaje
                  ui.imprimirAlerta('la cita se ha eliminau', 'success')
                  //reimprimir
@@ -106,10 +106,10 @@ class UI {
  
              
              //btnEliminar.addEventListener('click', eliminarCita)
-             btnEliminar.onclick = () => eliminarCita(id)
+            btnEliminar.onclick = () => eliminarCita(id)
  
              //EDITCITA
-             const btnEditar = document.createElement('button')
+           /* const btnEditar = document.createElement('button')
              btnEditar.classList.add('btn', 'btn-info', 'mr-2',)
              btnEditar.innerHTML =
                  'Editar <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>'
@@ -124,15 +124,15 @@ class UI {
                      sintomasInput.value = sintomas
              }
              
-             btnEditar.onclick = () => editarCita(cita)
- */
+             btnEditar.onclick = () => editarCita(cita)*/
+ 
             divCita.appendChild(mascotaParrafo)
             divCita.appendChild(propietarioParrafo)
             divCita.appendChild(telefonoParrafo)
             divCita.appendChild(fechaParrafo)
             divCita.appendChild(horaParrafo)
             divCita.appendChild(sintomasParrafo)
-            //divCita.appendChild(btnEliminar)
+            divCita.appendChild(btnEliminar)
             // divCita.appendChild(btnEditar)
             contenedorCitas.appendChild(divCita)
         })
