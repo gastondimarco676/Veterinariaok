@@ -30,3 +30,6 @@ administrarCitas.eliminarCita(id){
         this.citas = this.citas.filter(cita=> cita.id !== id)*
 *esta creado en clase Citas, administrarCitas es solo una instancia de la clase Citas
 por ahora siempre uso una sola instancia, supongo que mas delante servira mas
+QUE HACE HASTA AHORA?COMPROBACION
+se imprime una cita, se resetea el formulario, al crear otro no se repite(se vacia el objeto).
+al dar btnEliminar, se borra la cita y aparece un alert success
