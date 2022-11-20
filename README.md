@@ -1,5 +1,6 @@
 # Veterinariaok
-194 listo, lo que cambia es el app.js
+195 listo
+lo que cambia es el app.js
 que hay aca:
 191
 1-las const, hasta linea 10
@@ -22,3 +23,10 @@ metodo ui.imprimirCitas(administrarCitas)
 -scripting de cada parte del divCita: mascotaParrafo y demas
 -font-weight-bolder a cada span de cada item
 -limpiarHTML al comienzo, antes de imprimir todo el array citas actual
++195
+creacion del btnEliminar con su HTMl
+btnEliminar.onclick = () => eliminarCita(id)
+administrarCitas.eliminarCita(id){
+        this.citas = this.citas.filter(cita=> cita.id !== id)*
+*esta creado en clase Citas, administrarCitas es solo una instancia de la clase Citas
+por ahora siempre uso una sola instancia, supongo que mas delante servira mas
