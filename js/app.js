@@ -109,11 +109,11 @@ class UI {
             btnEliminar.onclick = () => eliminarCita(id)
  
              //EDITCITA
-           /* const btnEditar = document.createElement('button')
+           const btnEditar = document.createElement('button')
              btnEditar.classList.add('btn', 'btn-info', 'mr-2',)
              btnEditar.innerHTML =
                  'Editar <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>'
-         const editarCita = cita => {
+         /*const editarCita = cita => {
                  console.log(cita)
                  const { mascota, propietario, telefono, fecha, hora, sintomas } = cita;
                  mascotaInput.value = mascota,
@@ -122,9 +122,8 @@ class UI {
                      fechaInput.value = fecha,
                      horaInput.value = hora,
                      sintomasInput.value = sintomas
-             }
-             
-             btnEditar.onclick = () => editarCita(cita)*/
+             }*/
+             btnEditar.onclick = () => editarCita(cita)
  
             divCita.appendChild(mascotaParrafo)
             divCita.appendChild(propietarioParrafo)
@@ -133,7 +132,7 @@ class UI {
             divCita.appendChild(horaParrafo)
             divCita.appendChild(sintomasParrafo)
             divCita.appendChild(btnEliminar)
-            // divCita.appendChild(btnEditar)
+            divCita.appendChild(btnEditar)
             contenedorCitas.appendChild(divCita)
         })
 
@@ -205,7 +204,7 @@ function reiniciarObjeto() {
         citaObj.sintomas = ''
 
 }
-/*
+
 function editarCita (cita) {
     console.log(cita)
     const { mascota, propietario, telefono, fecha, hora, sintomas } = cita;
@@ -215,4 +214,8 @@ function editarCita (cita) {
         fechaInput.value = fecha,
         horaInput.value = hora,
         sintomasInput.value = sintomas
- }*/
+
+        //cambiar texto del boton formu al editar
+       document.getElementById("botonFormu").textContent = "Guardar cambios"
+
+ }
