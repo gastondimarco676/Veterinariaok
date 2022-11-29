@@ -9,6 +9,9 @@ const sintomasInput = document.getElementById('sintomas')
 const formulario = document.getElementById('nueva-cita')
 const contenedorCitas = document.getElementById('citas')
 
+//futura variable para el modo edicion
+let editando
+
 class Citas {
     constructor() {
         this.citas = []
@@ -17,10 +20,10 @@ class Citas {
     agregarCita(cita) {
         this.citas = [...this.citas, cita]
 
-        console.log(this.citas)
-}
-    eliminarCita(id){
-        this.citas = this.citas.filter(cita=> cita.id !== id)
+        //console.log(this.citas)
+    }
+    eliminarCita(id) {
+        this.citas = this.citas.filter(cita => cita.id !== id)
     }
 }
 
@@ -87,44 +90,44 @@ class UI {
 
 
             //ELIMICITA
-             const btnEliminar = document.createElement('button')
-             btnEliminar.classList.add('btn', 'btn-danger', 'mr-2',)
-             btnEliminar.innerHTML =
-                 'Eliminar <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>'
- 
-             const eliminarCita = id => {
-                 //elimina la cita
-                 //contenedorCitas.removeChild(divCita)
-            administrarCitas.eliminarCita(id)
-                 //mensaje
-                 ui.imprimirAlerta('la cita se ha eliminau', 'success')
-                 //reimprimir
-                 ui.imprimirCitas(administrarCitas)
- 
-                 
-             }
- 
-             
-             //btnEliminar.addEventListener('click', eliminarCita)
+            const btnEliminar = document.createElement('button')
+            btnEliminar.classList.add('btn', 'btn-danger', 'mr-2',)
+            btnEliminar.innerHTML =
+                'Eliminar <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>'
+
+            const eliminarCita = id => {
+                //elimina la cita
+                //contenedorCitas.removeChild(divCita)
+                administrarCitas.eliminarCita(id)
+                //mensaje
+                ui.imprimirAlerta('la cita se ha eliminau', 'success')
+                //reimprimir
+                ui.imprimirCitas(administrarCitas)
+
+
+            }
+
+
+            //btnEliminar.addEventListener('click', eliminarCita)
             btnEliminar.onclick = () => eliminarCita(id)
- 
-             //EDITCITA
-           const btnEditar = document.createElement('button')
-             btnEditar.classList.add('btn', 'btn-info', 'mr-2',)
-             btnEditar.innerHTML =
-                 'Editar <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>'
-         /*const editarCita = cita => {
-                 console.log(cita)
-                 const { mascota, propietario, telefono, fecha, hora, sintomas } = cita;
-                 mascotaInput.value = mascota,
-                     propietarioInput.value = propietario,
-                     telefonoInput.value = telefono,
-                     fechaInput.value = fecha,
-                     horaInput.value = hora,
-                     sintomasInput.value = sintomas
-             }*/
-             btnEditar.onclick = () => editarCita(cita)
- 
+
+            //EDITCITA
+            const btnEditar = document.createElement('button')
+            btnEditar.classList.add('btn', 'btn-info', 'mr-2',)
+            btnEditar.innerHTML =
+                'Editar <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>'
+            /*const editarCita = cita => {
+                    console.log(cita)
+                    const { mascota, propietario, telefono, fecha, hora, sintomas } = cita;
+                    mascotaInput.value = mascota,
+                        propietarioInput.value = propietario,
+                        telefonoInput.value = telefono,
+                        fechaInput.value = fecha,
+                        horaInput.value = hora,
+                        sintomasInput.value = sintomas
+                }*/
+            btnEditar.onclick = () => editarCita(cita)
+
             divCita.appendChild(mascotaParrafo)
             divCita.appendChild(propietarioParrafo)
             divCita.appendChild(telefonoParrafo)
@@ -184,11 +187,25 @@ function nuevaCita(e) {
         ui.imprimirAlerta('Todos campos obli', 'error')
         return;
     }
-    //:ui.imprimirAlerta('Cita agregada', 'success')
-    citaObj.id = Date.now()
 
-    //administrarCitas.agregarCita(citaObj)
-    administrarCitas.agregarCita({ ...citaObj })
+    if (editando) {
+        ui.imprimirAlerta('Editado correstamente', 'success')
+        document.getElementById("botonFormu").textContent = "Crear Cita"
+        //pasar el objeto a edicion
+        editando = false
+    }
+    
+    else {
+        
+        citaObj.id = Date.now()
+        //administrarCitas.agregarCita(citaObj)
+        administrarCitas.agregarCita({ ...citaObj }) 
+        ui.imprimirAlerta('Se agregou correstamente', 'success')
+        
+    }
+
+    //
+
     reiniciarObjeto()
     formulario.reset()
     ui.imprimirCitas(administrarCitas)
@@ -205,9 +222,9 @@ function reiniciarObjeto() {
 
 }
 
-function editarCita (cita) {
+function editarCita(cita) {
     console.log(cita)
-    const { mascota, propietario, telefono, fecha, hora, sintomas } = cita;
+    const { mascota, propietario, telefono, fecha, hora, sintomas, id } = cita;
     mascotaInput.value = mascota,
         propietarioInput.value = propietario,
         telefonoInput.value = telefono,
@@ -215,7 +232,18 @@ function editarCita (cita) {
         horaInput.value = hora,
         sintomasInput.value = sintomas
 
-        //cambiar texto del boton formu al editar
-       document.getElementById("botonFormu").textContent = "Guardar cambios"
+    //Volver a llenar el objeto
+    citaObj.mascota = mascota
+    citaObj.propietario = propietario
+    citaObj.telefono = telefono
+    citaObj.fecha = fecha
+    citaObj.hora = hora
+    citaObj.sintomas = sintomas
+    citaObj.id = id
 
- }
+    //cambiar texto del boton formu al editar
+    document.getElementById("botonFormu").textContent = "Guardar cambios"
+
+    editando = true
+
+}
